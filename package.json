@@ -4,6 +4,7 @@
     "author": "Ionic Framework",
     "homepage": "http://ionicframework.com/",
     "private": true,
+    "author": "Mohamed Habashy (mohamed.habshey10@gmail.com)",
     "scripts": {
         "clean": "ionic-app-scripts clean",
         "build": "ionic-app-scripts build",
