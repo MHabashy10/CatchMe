@@ -42,10 +42,10 @@ export class MyApp {
 
     // set our app's pages
     this.pages = [
-      { title: 'Hello', name: 'TabsPage', component: TabsPage, tabComponent: HelloIonicPage, index: 0, icon: 'calendar' },
-      { title: 'Map', name: 'TabsPage', component: TabsPage, tabComponent: MapPage, index: 1, icon: 'contacts' },
+      { title: 'Hello', name: 'TabsPage', component: TabsPage, tabComponent: HelloIonicPage, index: 0, icon: 'home' },
+      { title: 'Map', name: 'TabsPage', component: TabsPage, tabComponent: MapPage, index: 1, icon: 'map' },
       { title: 'Friends', name: 'TabsPage', component: TabsPage, tabComponent: FriendsPage, index: 2, icon: 'contacts' },
-      { title: 'List', name: 'TabsPage', component: TabsPage, tabComponent: ListPage, index: 3, icon: 'contacts' },
+      { title: 'List', name: 'TabsPage', component: TabsPage, tabComponent: ListPage, index: 3, icon: 'list' },
     ];
   }
 
