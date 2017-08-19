@@ -2,7 +2,7 @@ import { Component, ViewChild } from '@angular/core';
 
 import { Platform, MenuController, Nav } from 'ionic-angular';
 import { Storage } from '@ionic/storage';
-
+import { AuthService } from '../providers/auth-service';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -33,16 +33,17 @@ export class MyApp {
     public menu: MenuController,
     public statusBar: StatusBar,
     public splashScreen: SplashScreen,
-    private storage: Storage
+    private storage: Storage,
+    private auth: AuthService
   ) {
     this.initializeApp();
 
     // set our app's pages
     this.pages = [
-      { title: 'Hello', name: 'TabsPage',  index: 0, icon: 'home' },
-      { title: 'Map', name: 'TabsPage',  index: 1, icon: 'map' },
-      { title: 'Friends', name: 'TabsPage',  index: 2, icon: 'contacts' },
-      { title: 'List', name: 'TabsPage',  index: 3, icon: 'list' },
+      { title: 'Hello', name: 'TabsPage', index: 0, icon: 'home' },
+      { title: 'Map', name: 'TabsPage', index: 1, icon: 'map' },
+      { title: 'Friends', name: 'TabsPage', index: 2, icon: 'contacts' },
+      { title: 'List', name: 'TabsPage', index: 3, icon: 'list' },
     ];
   }
 
@@ -69,6 +70,13 @@ export class MyApp {
 
   }
 
+  public logout() {
+    this.auth.logout().subscribe(succ => {
+      this.nav.setRoot('LoginPage');
+      // close the menu when clicking a link from the menu
+      this.menu.close();
+    });
+  }
 
 
   openPage(page: PageInterface) {
