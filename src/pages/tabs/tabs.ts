@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { NavParams } from 'ionic-angular';
 
-import { HelloIonicPage } from '../hello-ionic/hello-ionic';
 import { FriendsPage } from '../friends/friends';
 import { MapPage } from '../map/map';
 import { ListPage } from '../list/list';
@@ -12,17 +11,20 @@ import { ListPage } from '../list/list';
  * See http://ionicframework.com/docs/components/#navigation for more info
  * on Ionic pages and navigation.
  */
+import { IonicPage } from 'ionic-angular';
 
+
+@IonicPage()
 @Component({
   templateUrl: 'tabs.html'
 })
 export class TabsPage {
 
   // set the root pages for each tab
-  hello: any = HelloIonicPage;
+  hello: any = 'HomePage';
   map: any = MapPage;
   friends: any = FriendsPage;
-   list: any = ListPage;
+  list: any = ListPage;
   mySelectedIndex: number;
 
   constructor(navParams: NavParams) {
