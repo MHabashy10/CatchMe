@@ -1,12 +1,8 @@
 import { Component, ViewChild } from '@angular/core';
 
 import { Platform, MenuController, Nav } from 'ionic-angular';
+import { Storage } from '@ionic/storage';
 
-import { TabsPage } from '../pages/tabs/tabs';
-import { HelloIonicPage } from '../pages/hello-ionic/hello-ionic';
-import { ListPage } from '../pages/list/list';
-import { FriendsPage } from '../pages/friends/friends';
-import { MapPage } from '../pages/map/map';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -14,7 +10,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 export interface PageInterface {
   title: string;
   name: string;
-  component: any;
+  component?: any;
   icon: string;
   logsOut?: boolean;
   index?: number;
@@ -28,26 +24,28 @@ export interface PageInterface {
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  // make TabsPage the root (or first) page
-  rootPage = TabsPage;
+  rootPage: any;
   pages: PageInterface[];
+
 
   constructor(
     public platform: Platform,
     public menu: MenuController,
     public statusBar: StatusBar,
-    public splashScreen: SplashScreen
+    public splashScreen: SplashScreen,
+    private storage: Storage
   ) {
     this.initializeApp();
 
     // set our app's pages
     this.pages = [
-      { title: 'Hello', name: 'TabsPage', component: TabsPage, tabComponent: HelloIonicPage, index: 0, icon: 'home' },
-      { title: 'Map', name: 'TabsPage', component: TabsPage, tabComponent: MapPage, index: 1, icon: 'map' },
-      { title: 'Friends', name: 'TabsPage', component: TabsPage, tabComponent: FriendsPage, index: 2, icon: 'contacts' },
-      { title: 'List', name: 'TabsPage', component: TabsPage, tabComponent: ListPage, index: 3, icon: 'list' },
+      { title: 'Hello', name: 'TabsPage',  index: 0, icon: 'home' },
+      { title: 'Map', name: 'TabsPage',  index: 1, icon: 'map' },
+      { title: 'Friends', name: 'TabsPage',  index: 2, icon: 'contacts' },
+      { title: 'List', name: 'TabsPage',  index: 3, icon: 'list' },
     ];
   }
+
 
   initializeApp() {
     this.platform.ready().then(() => {
@@ -56,6 +54,19 @@ export class MyApp {
       this.statusBar.styleDefault();
       this.splashScreen.hide();
     });
+
+    this.storage.get('age').then((val) => {
+      if (!val) {
+        // make login the root (or first) page
+        this.rootPage = 'LoginPage';
+      } else {
+        // make TabsPage the root (or first) page
+        this.rootPage = 'TabsPage';
+      }
+      console.log('Your age is', val);
+    });
+
+
   }
 
 
