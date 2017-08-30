@@ -3,6 +3,7 @@ import { NgModule, ErrorHandler } from '@angular/core';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { IonicStorageModule } from '@ionic/storage';
 
+import { HttpModule, JsonpModule } from '@angular/http';
 import { AuthService } from './../providers/auth-service';
 
 import { AngularFireModule } from 'angularfire2';
@@ -35,7 +36,7 @@ var config = {
     ListPage,
     MapPage,
     FriendsPage
-    
+
   ],
   imports: [
     BrowserModule,
@@ -43,7 +44,9 @@ var config = {
     IonicStorageModule.forRoot(),
     AngularFireModule.initializeApp(config, 'my-app'),
     AngularFireDatabaseModule,
-    AngularFireAuthModule
+    AngularFireAuthModule,
+    HttpModule,
+    JsonpModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -52,7 +55,7 @@ var config = {
     ListPage,
     MapPage,
     FriendsPage
-    
+
   ],
   providers: [
     StatusBar,
