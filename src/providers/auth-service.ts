@@ -17,7 +17,7 @@ export class User {
 @Injectable()
 export class AuthService {
      currentUser: User;
-     private commentsUrl = 'http://localhost:5030/api/v1/accounts';
+     private commentsUrl = '/api/v1/accounts';
      // Resolve HTTP using the constructor
      constructor(private http: Http) { }
 
