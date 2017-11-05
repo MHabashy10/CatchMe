@@ -45,8 +45,8 @@ export class ProfilePage {
   toggleForm() {
     console.log(this.profileForm.value);
    
-    this.profileForm.enable()
-    this.profileForm.enable()
+    setTimeout(()=> this.profileForm.enable())
+
   }
   ionViewDidLoad() {
     console.log('ionViewDidLoad ProfilePage');
