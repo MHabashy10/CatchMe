@@ -4,14 +4,11 @@ import { Http, Response, Headers, RequestOptions } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 
-export class User {
-     name: string;
-     email: string;
-
-     constructor(name: string, email: string) {
-          this.name = name;
-          this.email = email;
-     }
+export interface User {
+     firstName: string;
+     lastName: string;
+     email: any;
+     phone: number;
 }
 
 @Injectable()
@@ -29,8 +26,8 @@ export class AuthService {
                let headers = new Headers({ 'Content-Type': 'application/json' }); // ... Set content type to JSON
                let options = new RequestOptions({ headers: headers }); // Create a request option
 
-               return this.http.post(this.commentsUrl+'/login', bodyString, options) // ...using post request
-                    .map((res: Response) => res.json()) // ...and calling .json() on the response to return data
+               return this.http.post(this.commentsUrl + '/login', bodyString, options) // ...using post request
+                    .map((res: Response) => this.currentUser = res.json()) // ...and calling .json() on the response to return data
                // .catch((error:any) => Observable.throw(error.json().error || 'Server error')); //...errors if any
 
 
