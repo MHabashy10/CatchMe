@@ -30,22 +30,22 @@
         <ion-col col-12 col-sm>
 
           <ion-label color="primary">First Name</ion-label>
-          <ion-input placeholder="Mohamed" formControlName="firstName"  required></ion-input>
+          <ion-input placeholder="Mohamed" formControlName="firstName"  [disabled]="profileForm.controls.firstName.disabled"  required></ion-input>
 
         </ion-col>
         <ion-col col-12 col-sm>
           <ion-label color="primary">Last Name</ion-label>
-          <ion-input placeholder="Habashy" formControlName="lastName"  required></ion-input>
+          <ion-input placeholder="Habashy" formControlName="lastName"[disabled]="profileForm.controls.lastName.disabled"  required></ion-input>
         </ion-col>
       </ion-row>
       <ion-row>
         <ion-col col-12 col-sm>
           <ion-label color="primary">Email</ion-label>
-          <ion-input type="email" formControlName="email" placeholder="mohamed@example.com"  required></ion-input>
+          <ion-input type="email" formControlName="email" placeholder="mohamed@example.com"[disabled]="profileForm.controls.email.disabled"  required></ion-input>
         </ion-col>
         <ion-col col-12 col-sm>
           <ion-label color="primary">Phone Number</ion-label>
-          <ion-input type="tel" placeholder="281088611" formControlName="phone"  required></ion-input>
+          <ion-input type="tel" placeholder="281088611" formControlName="phone" [disabled]="profileForm.controls.phone.disabled" required></ion-input>
         </ion-col>
       </ion-row>
       <ion-row>
