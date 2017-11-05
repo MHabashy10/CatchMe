@@ -44,6 +44,7 @@ export class MyApp {
       { title: 'Map', name: 'TabsPage', index: 1, icon: 'map' },
       { title: 'Friends', name: 'TabsPage', index: 2, icon: 'contacts' },
       { title: 'List', name: 'TabsPage', index: 3, icon: 'list' },
+      { title: 'Profile', name: 'ProfilePage', component: 'ProfilePage', icon: 'person' },
     ];
   }
 
@@ -92,7 +93,7 @@ export class MyApp {
     // If we are already on tabs just change the selected tab
     // don't setRoot again, this maintains the history stack of the
     // tabs even if changing them from the menu
-    if (this.nav.getActiveChildNavs() && page.index != undefined) {
+    if (this.nav.getActiveChildNavs().length && page.index != undefined) {
       this.nav.getActiveChildNavs()[0].select(page.index);
       // Set the root of the nav with params if it's a tab index
     } else {
