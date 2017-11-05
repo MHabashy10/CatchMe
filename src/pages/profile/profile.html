@@ -6,64 +6,58 @@
 -->
 <ion-header>
 
-  <ion-navbar>
-    <button ion-button menuToggle>
-      <ion-icon name="menu"></ion-icon>
-    </button>
-    <ion-title>Profile</ion-title>
-  </ion-navbar>
+     <ion-navbar>
+          <button ion-button menuToggle>
+               <ion-icon name="menu"></ion-icon>
+          </button>
+          <ion-title>Profile</ion-title>
+     </ion-navbar>
 
 </ion-header>
 
 
 <ion-content padding>
-  <form [formGroup]="profileForm" (ngSubmit)="logForm()">
-    <ion-grid>
-      <ion-row>
-        <ion-col col-12>
-          <div class="logo">
-            <img src="assets/img/appicon.svg" alt="Ionic logo">
-          </div>
-        </ion-col>
-      </ion-row>
-      <ion-row>
-        <ion-col col-12 col-sm>
+     <form [formGroup]="profileForm" (ngSubmit)="logForm()">
+          <ion-grid>
+               <ion-row>
+                    <ion-col col-12>
+                         <div class="logo">
+                              <img [src]="user.avatar">
+                         </div>
+                    </ion-col>
+               </ion-row>
+               <ion-row>
+                    <ion-col col-12 col-sm>
 
-          <ion-label color="primary">First Name</ion-label>
-          <ion-input placeholder="Mohamed" formControlName="firstName"  [disabled]="profileForm.controls.firstName.disabled"  required></ion-input>
+                         <ion-label color="primary">First Name</ion-label>
+                         <ion-input placeholder="Mohamed" formControlName="firstName" [disabled]="profileForm.controls.firstName.disabled" required></ion-input>
 
-        </ion-col>
-        <ion-col col-12 col-sm>
-          <ion-label color="primary">Last Name</ion-label>
-          <ion-input placeholder="Habashy" formControlName="lastName"[disabled]="profileForm.controls.lastName.disabled"  required></ion-input>
-        </ion-col>
-      </ion-row>
-      <ion-row>
-        <ion-col col-12 col-sm>
-          <ion-label color="primary">Email</ion-label>
-          <ion-input type="email" formControlName="email" placeholder="mohamed@example.com"[disabled]="profileForm.controls.email.disabled"  required></ion-input>
-        </ion-col>
-        <ion-col col-12 col-sm>
-          <ion-label color="primary">Phone Number</ion-label>
-          <ion-input type="tel" placeholder="281088611" formControlName="phone" [disabled]="profileForm.controls.phone.disabled" required></ion-input>
-        </ion-col>
-      </ion-row>
-      <ion-row>
-        <ion-col>
+                    </ion-col>
+                    <ion-col col-12 col-sm>
+                         <ion-label color="primary">Last Name</ion-label>
+                         <ion-input placeholder="Habashy" formControlName="lastName" [disabled]="profileForm.controls.lastName.disabled" required></ion-input>
+                    </ion-col>
+               </ion-row>
+               <ion-row>
+                    <ion-col col-12 col-sm>
+                         <ion-label color="primary">Email</ion-label>
+                         <ion-input type="email" formControlName="email" placeholder="mohamed@example.com" [disabled]="profileForm.controls.email.disabled"
+                              required></ion-input>
+                    </ion-col>
+                    <ion-col col-12 col-sm>
+                         <ion-label color="primary">Phone Number</ion-label>
+                         <ion-input type="tel" placeholder="281088611" formControlName="phone" [disabled]="profileForm.controls.phone.disabled" required></ion-input>
+                    </ion-col>
+               </ion-row>
+               <ion-row>
+                    <ion-col>
 
-          <button type="submit" [disabled]="!profileForm.valid" ion-button full>Save</button>
-          <button type="button" (click)="toggleForm()" ion-button full>Edit</button>
-        </ion-col>
+                         <button type="submit" *ngIf="profileForm.enabled" [disabled]="profileForm.invalid||profileForm.pristine " ion-button full>Save</button>
+                         <button type="button" *ngIf="profileForm.disabled" (click)="toggleForm()" ion-button full>Edit</button>
+                    </ion-col>
 
-      </ion-row>
-      <ion-row>
-        <ion-col>
-
-          {{profileForm }}
-        </ion-col>
-
-      </ion-row>
-      <!-- <ion-row>
+               </ion-row>
+               <!-- <ion-row>
         <ion-col col-12 col-sm>
           <ion-label color="primary">First Name</ion-label>
           <ion-input placeholder="Text Input"></ion-input>
@@ -74,6 +68,6 @@
         </ion-col>
       </ion-row> -->
 
-    </ion-grid>
-  </form>
+          </ion-grid>
+     </form>
 </ion-content>
