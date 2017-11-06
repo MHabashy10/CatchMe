@@ -27,7 +27,8 @@ export class AuthService {
                let options = new RequestOptions({ headers: headers }); // Create a request option
 
                return this.http.post(this.commentsUrl + '/login', bodyString, options) // ...using post request
-                    .map((res: Response) => this.currentUser = res.json()) // ...and calling .json() on the response to return data
+                    .map((res: Response) =>
+                    this.currentUser = res.json()) // ...and calling .json() on the response to return data
                // .catch((error:any) => Observable.throw(error.json().error || 'Server error')); //...errors if any
 
 
@@ -46,10 +47,14 @@ export class AuthService {
                return Observable.throw("Please insert credentials");
           } else {
                // At this point store the credentials to your backend!
-               return Observable.create(observer => {
-                    observer.next(true);
-                    observer.complete();
-               });
+               let bodyString = JSON.stringify(credentials);
+               let headers = new Headers({ 'Content-Type': 'application/json' }); // ... Set content type to JSON
+               let options = new RequestOptions({ headers: headers }); // Create a request option
+
+               return this.http.post(this.commentsUrl + '/signUp', bodyString, options) // ...using post request
+                    .map((res: Response) =>
+                    this.currentUser = res.json()
+               )
           }
      }
 
