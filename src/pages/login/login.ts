@@ -21,7 +21,7 @@ export class LoginPage {
      public login() {
           this.showLoading()
           this.auth.login(this.registerCredentials).subscribe(allowed => {
-               if (allowed.status) {
+               if (allowed._id) {
                     this.nav.setRoot('TabsPage');
                } else {
                     this.showError("Access Denied");
