@@ -44,7 +44,7 @@ export class SignupPage {
           text: 'OK',
           handler: data => {
             if (this.createSuccess) {
-              this.nav.popToRoot();
+              this.nav.setRoot('TabsPage');
             }
           }
         }
