@@ -3,7 +3,6 @@ import { NavController, NavParams, IonicPage } from 'ionic-angular';
 import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { AuthService, User } from '../../providers/auth-service';
 
-
 /**
  * Generated class for the ProfilePage page.
  *
@@ -13,44 +12,52 @@ import { AuthService, User } from '../../providers/auth-service';
 
 @IonicPage()
 @Component({
-     selector: 'page-profile',
-     templateUrl: 'profile.html',
+    selector: 'page-profile',
+    templateUrl: 'profile.html',
 })
 
 export class ProfilePage {
 
-     user: User;
-     private profileForm: FormGroup;
+    user: User;
+    private profileForm: FormGroup;
 
 
-     constructor(public navCtrl: NavController, public navParams: NavParams, private formBuilder: FormBuilder, private auth: AuthService) {
-          // get currentUser info
-          this.user = this.auth.getUserInfo();
-          // create profile formBuilder
-          this.profileForm = this.formBuilder.group({
-               firstName: [this.user.firstName, Validators.required],
-               lastName: [this.user.lastName, Validators.required],
-               email: [this.user.email, Validators.required],
-               phone: [this.user.phone, Validators.required]
-          });
-          // by default disable the form
-          this.profileForm.disable()
-     }
-     logForm() {
-          console.log(this.profileForm.value);
-          // this.profileForm.disable()
-     }
+    constructor(public navCtrl: NavController, public navParams: NavParams, private formBuilder: FormBuilder, private auth: AuthService) {
 
-     toggleForm() {
+        this.user = new User()// { firstName: "", lastName: "", email: "", phone: null };
+        // create profile formBuilder
+        this.profileForm = this.formBuilder.group({
+            firstName: [this.user.firstName, Validators.required],
+            lastName: [this.user.lastName, Validators.required],
+            email: [this.user.email, Validators.required],
+            phone: [this.user.phone, Validators.required]
+        });
+        // by default disable the form
+        this.profileForm.disable()
 
-          console.log(this.profileForm.value);
-          // enable the form for editing
-          this.profileForm.enable()
+    }
+    logForm() {
+        console.log(this.profileForm.value);
+        // this.profileForm.disable()
+    }
 
-     }
-     ionViewDidLoad() {
-          console.log('ionViewDidLoad ProfilePage');
-     }
+    toggleForm() {
+
+        console.log(this.profileForm.value);
+        // enable the form for editing
+        this.profileForm.enable()
+
+    }
+    ionViewCanEnter() {
+        console.log('ionViewCanEnter ProfilePage');
+        // get currentUser info
+        return this.auth.getUserInfo().then((userData => this.user = userData))
+
+    }
+
+    ionViewWillEnter() {
+
+    }
 
 }
 
