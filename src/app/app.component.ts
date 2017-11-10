@@ -7,6 +7,8 @@ import { AuthService } from '../providers/auth-service';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
+
+
 export interface PageInterface {
   title: string;
   name: string;
@@ -57,16 +59,17 @@ export class MyApp {
       this.splashScreen.hide();
     });
 
-    this.storage.get('age').then((val) => {
-      if (!val) {
-        // make login the root (or first) page
-        this.rootPage = 'LoginPage';
-      } else {
-        // make TabsPage the root (or first) page
-        this.rootPage = 'TabsPage';
-      }
-      console.log('Your age is', val);
-    });
+    this.auth.getUserInfo()
+      .then((userData) => {
+        if (!userData) {
+          // make login the root (or first) page
+          this.rootPage = 'LoginPage';
+        } else {
+          // make TabsPage the root (or first) page
+          this.rootPage = 'TabsPage';
+        }
+        console.log('Your user info: ', userData);
+      });
 
 
   }
