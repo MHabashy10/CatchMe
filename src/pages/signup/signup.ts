@@ -29,11 +29,27 @@ export class RegisterCredentials {
 export class SignupPage {
 
   createSuccess = false;
-  registerCredentials = { email: '', password: '' };
- 
-  constructor(private nav: NavController, private auth: AuthService, private alertCtrl: AlertController) { }
- 
+  registerCredentials: RegisterCredentials = new RegisterCredentials();
+  private registerForm: FormGroup;
+
+  constructor(private nav: NavController, private auth: AuthService, private alertCtrl: AlertController, private formBuilder: FormBuilder) {
+    this.registerCredentials = new RegisterCredentials();
+    // create register formBuilder
+    this.registerForm = this.formBuilder.group({
+      firstName: [this.registerCredentials.firstName, Validators.required],
+      lastName: [this.registerCredentials.lastName, Validators.required],
+      email: [this.registerCredentials.email, [Validators.required, ValidationService.emailValidator]],
+      password: [this.registerCredentials.password, Validators.required],
+      confirmPassword: [this.registerCredentials.confirmPassword, Validators.required]
+    });
+
+
+  }
+
   public register() {
+    //disable when submitted
+    this.registerForm.disable();
+
     this.auth.register(this.registerCredentials).subscribe(success => {
       if (success) {
         this.createSuccess = true;
@@ -46,7 +62,7 @@ export class SignupPage {
         this.showPopup("Error", error);
       });
   }
- 
+
   showPopup(title, text) {
     let alert = this.alertCtrl.create({
       title: title,
