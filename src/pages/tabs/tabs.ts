@@ -1,9 +1,6 @@
 import { Component } from '@angular/core';
 import { NavParams } from 'ionic-angular';
 
-import { FriendsPage } from '../friends/friends';
-import { MapPage } from '../map/map';
-import { ListPage } from '../list/list';
 
 /**
  * Generated class for the TabsPage page.
@@ -22,9 +19,9 @@ export class TabsPage {
 
   // set the root pages for each tab
   hello: any = 'HomePage';
-  map: any = MapPage;
-  friends: any = FriendsPage;
-  list: any = ListPage;
+  map: any = "MapPage";
+  friends: any = "FriendsPage";
+  list: any = "ListPage";
   mySelectedIndex: number;
 
   constructor(navParams: NavParams) {
