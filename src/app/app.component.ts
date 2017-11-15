@@ -1,8 +1,7 @@
 import { Component, ViewChild } from '@angular/core';
 
 import { Platform, MenuController, Nav } from 'ionic-angular';
-import { Storage } from '@ionic/storage';
-import { AuthService } from '../providers/auth-service';
+import { AuthService } from '../providers/auth.service';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -35,7 +34,6 @@ export class MyApp {
     public menu: MenuController,
     public statusBar: StatusBar,
     public splashScreen: SplashScreen,
-    private storage: Storage,
     private auth: AuthService
   ) {
     this.initializeApp();
