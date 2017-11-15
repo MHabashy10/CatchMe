@@ -1,4 +1,5 @@
 import { Component, ViewChild, ElementRef } from '@angular/core';
+import {IonicPage} from 'ionic-angular'
 
 
 import { Platform } from 'ionic-angular';
@@ -7,7 +8,7 @@ import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/of';
 declare var google: any;
 
-
+@IonicPage()
 @Component({
   selector: 'page-map',
   templateUrl: 'map.html'
