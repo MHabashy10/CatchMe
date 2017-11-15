@@ -4,7 +4,9 @@ import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { IonicStorageModule } from '@ionic/storage';
 
 import { HttpModule, JsonpModule } from '@angular/http';
-import { AuthService } from './../providers/auth-service';
+
+import { AuthService } from './../providers/auth.service';
+import { ValidationService } from '../providers/validation.service';
 
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
@@ -12,15 +14,12 @@ import { AngularFireAuthModule } from 'angularfire2/auth';
 
 import { MyApp } from './app.component';
 
-import { ItemDetailsPage } from '../pages/item-details/item-details';
-import { ListPage } from '../pages/list/list';
-import { MapPage } from '../pages/map/map';
-import { FriendsPage } from '../pages/friends/friends';
-
-
+import { ControlMessages } from '../directives/control-messages.directive';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
+
+
 var config = {
   apiKey: "AIzaSyBRvwabU-PiSF-pT7co5IBW8TARWUa2pTw",
   authDomain: "popping-heat-2454.firebaseapp.com",
@@ -32,11 +31,7 @@ var config = {
 @NgModule({
   declarations: [
     MyApp,
-    ItemDetailsPage,
-    ListPage,
-    MapPage,
-    FriendsPage
-
+    ControlMessages
   ],
   imports: [
     BrowserModule,
@@ -50,18 +45,14 @@ var config = {
   ],
   bootstrap: [IonicApp],
   entryComponents: [
-    MyApp,
-    ItemDetailsPage,
-    ListPage,
-    MapPage,
-    FriendsPage
-
+    MyApp
   ],
   providers: [
     StatusBar,
     SplashScreen,
     { provide: ErrorHandler, useClass: IonicErrorHandler },
-    AuthService
+    AuthService,
+    ValidationService
   ]
 })
 export class AppModule { }
