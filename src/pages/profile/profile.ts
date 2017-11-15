@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams, IonicPage } from 'ionic-angular';
 import { Validators, FormBuilder, FormGroup } from '@angular/forms';
-import { AuthService, User } from '../../providers/auth-service';
+import { AuthService, User } from '../../providers/auth.service';
 
 /**
  * Generated class for the ProfilePage page.
