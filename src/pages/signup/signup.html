@@ -3,33 +3,67 @@
     <ion-title>Register</ion-title>
   </ion-navbar>
 </ion-header>
- 
+
 <ion-content class="login-content" padding>
   <div class="login-box">
-    
-    <form (ngSubmit)="register()" #registerForm="ngForm">
-      <ion-row>
-        <ion-col>
-          <ion-list inset>
-            
-            <ion-item>
-              <ion-input type="text" placeholder="Email" name="email" [(ngModel)]="registerCredentials.email" required></ion-input>
-            </ion-item>
-            
-            <ion-item>
-              <ion-input type="password" placeholder="Password" name="password" [(ngModel)]="registerCredentials.password" required></ion-input>
-            </ion-item>
-            
-          </ion-list>
+
+    <form [formGroup]="registerForm" (ngSubmit)="register()">
+      <ion-grid>
+        <ion-row>
+          <ion-col col-12 col-sm>
+            <div class="logo">
+              <img src="https://user-images.githubusercontent.com/5389035/27643779-a108039c-5c3f-11e7-83fe-2f57fba40887.png">
+            </div>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col col-12 col-sm>
+
+            <ion-label color="light">First Name</ion-label>
+            <ion-input placeholder="Mohamed" formControlName="firstName"></ion-input>
+
+          </ion-col>
+          <ion-col col-12 col-sm>
+            <ion-label color="light">Last Name</ion-label>
+            <ion-input placeholder="Habashy" formControlName="lastName"></ion-input>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col col-12 col-sm>
+            <ion-label color="light">Email</ion-label>
+            <ion-input type="email" formControlName="email" placeholder="mohamed@example.com"></ion-input>
+            <control-messages [control]="registerForm.controls.email"></control-messages>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col col-12 col-sm>
+            <ion-label color="light">Password</ion-label>
+            <ion-input type="text" placeholder="*********" formControlName="password"></ion-input>
+          </ion-col>
+          <ion-col col-12 col-sm>
+            <ion-label color="light">Confirm Password</ion-label>
+            <ion-input type="text" placeholder="******" formControlName="confirmPassword"></ion-input>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>
+
+            <button type="submit" *ngIf="registerForm.enabled" [disabled]="registerForm.invalid||registerForm.pristine " ion-button full>Register</button>
+          </ion-col>
+
+        </ion-row>
+        <!-- <ion-row>
+        <ion-col col-12 col-sm>
+          <ion-label color="light">First Name</ion-label>
+          <ion-input placeholder="Text Input"></ion-input>
         </ion-col>
-      </ion-row>
-      
-      <ion-row>
-        <ion-col class="signup-col">
-          <button ion-button class="submit-btn" full type="submit" [disabled]="!registerForm.form.valid">Register</button>
+        <ion-col col-12 col-sm>
+          <ion-label color="light">First Name</ion-label>
+          <ion-input placeholder="Text Input"></ion-input>
         </ion-col>
-      </ion-row>
-      
+      </ion-row> -->
+
+      </ion-grid>
     </form>
   </div>
 </ion-content>
