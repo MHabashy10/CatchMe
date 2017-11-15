@@ -1,14 +1,26 @@
 import { Component } from '@angular/core';
 import { NavController, AlertController, IonicPage } from 'ionic-angular';
-import { AuthService } from '../../providers/auth-service';
+import { AuthService } from '../../providers/auth.service';
+import { ValidationService } from '../../providers/validation.service';
+import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 
-/**
- * Generated class for the SignupPage page.
- *
- * See http://ionicframework.com/docs/components/#navigation for more info
- * on Ionic pages and navigation.
- */
+// RegisterCredentials class 
+export class RegisterCredentials {
+  email: string;
+  password: string;
+  confirmPassword: string;
+  firstName: string;
+  lastName: string;
 
+  constructor() {
+    this.email = "";
+    this.password = "";
+    this.confirmPassword = "";
+    this.firstName = "";
+    this.lastName = "";
+  }
+
+}
 @IonicPage()
 @Component({
   selector: 'page-signup',
