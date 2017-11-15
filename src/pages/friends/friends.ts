@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import {  NavController, NavParams } from 'ionic-angular';
+import {  NavController, NavParams, IonicPage } from 'ionic-angular';
 
 import { AngularFireDatabase } from 'angularfire2/database';
 import { AngularFireAuth } from 'angularfire2/auth';
@@ -14,7 +14,7 @@ import { Observable } from 'rxjs/Observable';
  * on Ionic pages and navigation.
  */
 
-
+@IonicPage()
 @Component({
   selector: 'page-friends',
   templateUrl: 'friends.html',
