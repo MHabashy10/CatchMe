@@ -50,7 +50,7 @@ export class SignupPage {
     //disable when submitted
     this.registerForm.disable();
 
-    this.auth.register(this.registerCredentials).subscribe(success => {
+    this.auth.register(this.registerForm.value).subscribe(success => {
       if (success) {
         this.createSuccess = true;
         this.showPopup("Success", "Account created.");
