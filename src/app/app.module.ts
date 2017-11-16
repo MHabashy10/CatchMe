@@ -14,8 +14,6 @@ import { AngularFireAuthModule } from 'angularfire2/auth';
 
 import { MyApp } from './app.component';
 
-import { ControlMessages } from '../directives/control-messages.directive';
-
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
@@ -30,8 +28,7 @@ var config = {
 };
 @NgModule({
   declarations: [
-    MyApp,
-    ControlMessages
+    MyApp
   ],
   imports: [
     BrowserModule,
