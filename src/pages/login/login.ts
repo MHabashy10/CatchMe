@@ -2,17 +2,27 @@
 import { Component } from '@angular/core';
 import { NavController, AlertController, LoadingController, Loading, IonicPage } from 'ionic-angular';
 import { AuthService } from '../../providers/auth.service';
+import { ValidationService } from '../../providers/validation.service';
+import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 
-@IonicPage()
+@IonicPage() 
 @Component({
      selector: 'page-login',
      templateUrl: 'login.html',
 })
 export class LoginPage {
      loading: Loading;
-     registerCredentials = { email: '', password: '' };
-
-     constructor(private nav: NavController, private auth: AuthService, private alertCtrl: AlertController, private loadingCtrl: LoadingController) { }
+     loginCredentials = { email: '', password: '' };
+     loginForm: FormGroup;
+     constructor(private nav: NavController, private auth: AuthService, private alertCtrl: AlertController, private loadingCtrl: LoadingController, private formBuilder: FormBuilder) {
+         // create login formBuilder
+    this.loginForm = this.formBuilder.group({
+       
+        email: [this.loginCredentials.email, [Validators.required, ValidationService.emailValidator]],
+        password: [this.loginCredentials.password, Validators.required]
+      });
+  
+      }
 
      public createAccount() {
           this.nav.push('SignupPage');
@@ -20,7 +30,7 @@ export class LoginPage {
 
      public login() {
           this.showLoading()
-          this.auth.login(this.registerCredentials).subscribe(allowed => {
+          this.auth.login(this.loginCredentials).subscribe(allowed => {
                if (allowed._id) {
                     this.nav.setRoot('TabsPage');
                } else {
