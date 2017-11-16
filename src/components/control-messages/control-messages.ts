@@ -1,16 +1,16 @@
 import { Component, Input } from '@angular/core';
 import { FormControl } from '@angular/forms';
-import { ValidationService } from '../providers/validation.service';
+import { ValidationService } from '../../providers/validation.service';
 
 @Component({
     selector: 'control-messages',
-    template: `<div *ngIf="errorMessage !== null">{{errorMessage}}</div>`
+    template: `<div [hidden]="!errorMessage">{{errorMessage}}</div>`
 })
 export class ControlMessages {
 
-    @Input() 
+    @Input()
     control: FormControl;
-    
+
     constructor() { }
 
     get errorMessage() {
