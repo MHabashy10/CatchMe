@@ -30,7 +30,7 @@ export class LoginPage {
 
      public login() {
           this.showLoading()
-          this.auth.login(this.loginCredentials).subscribe(allowed => {
+          this.auth.login(this.loginForm.value).subscribe(allowed => {
                if (allowed._id) {
                     this.nav.setRoot('TabsPage');
                } else {
