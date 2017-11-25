@@ -1,11 +1,11 @@
 import { Component, ViewChild, ElementRef } from '@angular/core';
-import {IonicPage} from 'ionic-angular'
+import { IonicPage } from 'ionic-angular'
 
 
 import { Platform } from 'ionic-angular';
 
 import { Observable } from 'rxjs/Observable';
-import 'rxjs/add/observable/of';
+import { of } from 'rxjs/observable/of';
 declare var google: any;
 
 @IonicPage()
@@ -30,12 +30,12 @@ export class MapPage {
     "lng": -89.38335
   }]
   @ViewChild('mapCanvas') mapElement: ElementRef;
-  constructor( public platform: Platform) {
+  constructor(public platform: Platform) {
   }
 
   ionViewDidLoad() {
 
-    Observable.of(this.map).subscribe((mapData: any) => {
+    of(this.map).subscribe((mapData: any) => {
       let mapEle = this.mapElement.nativeElement;
 
       let map = new google.maps.Map(mapEle, {
