@@ -2,8 +2,8 @@
 import { Injectable } from '@angular/core';
 import { Http, Response, Headers, RequestOptions } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
-import 'rxjs/add/operator/map';
-import 'rxjs/add/operator/do';
+import { map, tap } from 'rxjs/operators';
+
 
 import { Storage } from '@ionic/storage';
 
@@ -37,8 +37,10 @@ export class AuthService {
             let options = new RequestOptions({ headers: headers }); // Create a request option
 
             return this.http.post(this.commentsUrl + '/login', bodyString, options) // ...using post request
-                .do((res: Response) => this.setUserInfo(res.json())) // do set the userData
-                .map((res: Response) => res.json()) // ...and calling .json() on the response to return data
+                .pipe(
+                tap((res: Response) => this.setUserInfo(res.json())), // tap set the userData
+                map((res: Response) => res.json())
+                ) // ...and calling .json() on the response to return data
             // .catch((error:any) => Observable.throw(error.json().error || 'Server error')); //...errors if any
 
 
@@ -62,8 +64,10 @@ export class AuthService {
             let options = new RequestOptions({ headers: headers }); // Create a request option
 
             return this.http.post(this.commentsUrl + '/signUp', bodyString, options) // ...using post request
-                .do((res: Response) => this.setUserInfo(res.json())) // do set the userData
-                .map((res: Response) => res.json())
+                .pipe(
+                tap((res: Response) => this.setUserInfo(res.json())), // tap set the userData
+                map((res: Response) => res.json())
+                )
         }
     }
 
