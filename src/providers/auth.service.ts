@@ -2,8 +2,8 @@
 import { Injectable } from '@angular/core';
 import { Http, Response, Headers, RequestOptions } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
-import { map, tap } from 'rxjs/operators';
-
+import { map } from 'rxjs/operators/map';
+import { tap } from 'rxjs/operators/tap';
 
 import { Storage } from '@ionic/storage';
 
