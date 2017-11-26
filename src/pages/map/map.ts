@@ -4,7 +4,6 @@ import { IonicPage } from 'ionic-angular'
 
 import { Platform } from 'ionic-angular';
 
-import { Observable } from 'rxjs/Observable';
 import { of } from 'rxjs/observable/of';
 declare var google: any;
 
