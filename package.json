@@ -12,7 +12,8 @@
         "ionic:build": "ionic-app-scripts build",
         "ionic:serve": "ionic-app-scripts serve",
         "pack": "electron-builder --dir",
-        "dist": "electron-builder"
+        "dist": "electron-builder",
+        "compodoc": "./node_modules/.bin/compodoc -p tsconfig.json"
     },
     "build": {
         "appId": "com.habashy.catchme",
@@ -59,6 +60,7 @@
         "zone.js": "^0.8.18"
     },
     "devDependencies": {
+        "@compodoc/compodoc": "^1.0.5",
         "@ionic/app-scripts": "^2.1.4",
         "electron": "^1.8.1",
         "electron-builder": "^19.46.6",
